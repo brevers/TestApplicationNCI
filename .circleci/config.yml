@@ -2,12 +2,15 @@ version: 2.1
 
 workflow:
   version: 2
-  jobs:
-    build:
-      filters:
-        branches:
-          only:
-            - main
+  build:
+    jobs:
+      -build:
+        filters:
+          branches:
+            only:
+              - main
+            jobs:
+              build:
       working_directory: ~/TestApplicationNCI
       docker:
         - image: circleci/node:10.16.3
